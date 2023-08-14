@@ -1,11 +1,804 @@
 <!DOCTYPE html>
 <html lang="en">
+
+
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Bootstrap 5 Responsive Landing Page Design</title>
+
+    <!-- All CSS -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="./vendors/all.min.css">
+    <link rel="stylesheet" href="./vendors/bootstrap.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+        * {
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        body {
+            background: white;
+        }
+
+        .section-padding {
+            padding: 100px 0;
+        }
+
+        .carousel-item {
+            height: 100vh;
+            min-height: 300px;
+        }
+
+        .carousel-caption {
+            bottom: 220px;
+            z-index: 2;
+        }
+
+        .carousel-caption h5 {
+            font-size: 45px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-top: 25px;
+        }
+
+        .carousel-caption p {
+            width: 60%;
+            margin: auto;
+            font-size: 18px;
+            line-height: 1.9;
+        }
+
+        .carousel-inner:before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 1;
+        }
+
+        .navbar .getstarted {
+            margin-left: 30px;
+            border-radius: 4px;
+            font-weight: 400;
+            color: #fff;
+            text-decoration: none;
+            padding: 8px 15px;
+            line-height: 2.3;
+        }
+
+        .navbar-nav a {
+            font-size: 15px;
+            text-transform: uppercase;
+            font-weight: 800;
+        }
+
+        .navbar-nav a:hover {
+            background-color: gold;
+            border-radius: 20px;
+
+        }
+
+        .navbar-light .navbar-brand {
+            color: #000;
+            font-size: 25px;
+            text-transform: uppercase;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
+        .navbar-light .navbar-brand:focus,
+        .navbar-light .navbar-brand:hover {
+            color: #000;
+        }
+
+        .navbar-light .navbar-nav .nav-link {
+            color: #000;
+        }
+
+        .navbar-light .navbar-nav .nav-link:focus,
+        .navbar-light .navbar-nav .nav-link:hover {
+            color: #000;
+        }
+
+        .about-text .btn,
+        .carousel-item .btn {
+            background-color: gold;
+            color: black;
+            font-size: 15px;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .about-text .btn:hover,
+        .carousel-item .btn:hover {
+            background-color: black;
+            color: gold;
+        }
+
+
+        .w-100 {
+            height: 100vh;
+        }
+
+        .navbar-toggler {
+            padding: 1px 5px;
+            font-size: 18px;
+            line-height: 0.3;
+            background: #fff;
+        }
+
+        .membership {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .membership .card {
+            box-shadow: 10px 10px 15px 10px rgb(83, 83, 83);
+            align-items: center;
+            border-radius: 25px;
+        }
+
+        .membership .card h3 {
+            margin-bottom: 15px;
+        }
+
+        .membership .card .price {
+            font-size: 25px;
+        }
+
+        .membership .card span {
+            font-size: 30px;
+        }
+
+        .membership .card-body {
+            font-size: 15px;
+            color: white;
+        }
+
+        .membership .btn {
+            background-color: #000;
+            color: #fff;
+            border-radius: 10px;
+            font-size: 15px;
+            font-weight: 400;
+        }
+
+        .membership .btn:hover {
+            color: gold;
+            border-radius: 10px;
+        }
+
+        .trainings .card-body .btn {
+            background-color: gold;
+            color: #000;
+            font-weight: 700;
+
+        }
+
+        .trainings .card-body .btn:hover {
+            background-color: black;
+            color: gold;
+        }
+
+        .supplements .card {
+            padding: 10px 10px;
+            min-width: 250px;
+            border: 1px solid black;
+            border-radius: 25px;
+            cursor: pointer;
+            height: 100%;
+        }
+
+        .supplements .card img {
+            width: 100%;
+        }
+
+        .supplements .card .card-brand {
+            text-align: start;
+            padding: 10px 0;
+        }
+
+        .supplements .card .card-brand span {
+            color: black;
+            font-size: 25px;
+        }
+
+        .supplements .card .card-brand h5 {
+            padding-top: 10px;
+            color: black;
+            font-size: 15px;
+        }
+
+        .supplements .card .card-brand h4 {
+            padding-top: 10px;
+            color: black;
+            font-size: 15px;
+            font-weight: 700;
+        }
+
+        .supplements .card a {
+            margin: 5px;
+            padding: 5px;
+            font-weight: bold;
+            text-align: center;
+            display: block;
+            border: 1px solid black;
+            color: black;
+            transition: 0.5s;
+        }
+
+        .supplements .card a:hover {
+            background-color: black;
+            color: gold;
+        }
+
+        .supplements .card {
+            background: white;
+            padding: 30px;
+            transform: translateX(0px);
+            transition: 1s all;
+        }
+
+        .supplements .card:hover {
+            box-shadow: 6px 6px 6px 6px rgb(88, 88, 88);
+        }
+
+        .contact .btn {
+            background-color: #000;
+            color: white;
+        }
+
+        .contact .btn:hover {
+            background-color: black;
+            color: gold;
+        }
+
+        footer {
+            background: black;
+            height: auto;
+            width: 100%;
+            font-family: "Nunito";
+            padding-top: 40px;
+            color: #fff;
+        }
+
+        .footer-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .footer-content h3 {
+            font-size: 25px;
+            font-weight: 400;
+            text-transform: capitalize;
+            line-height: 45px;
+        }
+
+        .footer-content p {
+            max-width: 500px;
+            margin: 10px auto;
+            line-height: 30px;
+            font-size: 15px;
+        }
+
+        .socials {
+            list-style: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 15px 0 45px 0;
+        }
+
+        .socials li {
+            margin: 0 10px;
+        }
+
+        .socials a {
+            text-decoration: none;
+            color: #fff;
+        }
+
+        .footer-bottom {
+            background: black;
+            width: 100%;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        .footer-bottom p {
+            font-size: 14px;
+            word-spacing: 2px;
+            text-transform: capitalize;
+        }
+
+        .footer-bottom span {
+            text-transform: uppercase;
+            opacity: .5;
+            font-weight: 200;
+        }
+
+        @media only screen and (min-width: 768px) and (max-width: 991px) {
+            .carousel-caption {
+                bottom: 370px;
+            }
+
+            .carousel-caption p {
+                width: 100%;
+            }
+
+            .card {
+                margin-bottom: 30px;
+            }
+
+            .img-area img {
+                width: 100%;
+            }
+        }
+
+        @media only screen and (max-width: 767px) {
+            .navbar-nav {
+                text-align: center;
+            }
+
+            .carousel-caption {
+                bottom: 125px;
+            }
+
+            .carousel-caption h5 {
+                font-size: 17px;
+            }
+
+            .carousel-caption a {
+                padding: 10px 15px;
+                font-size: 15px;
+            }
+
+            .carousel-caption p {
+                width: 100%;
+                line-height: 1.6;
+                font-size: 12px;
+            }
+
+            .about-text {
+                padding-top: 50px;
+            }
+
+            .trainings .card {
+                margin-bottom: 30px;
+            }
+
+            .membership .card {
+                margin-bottom: 30px;
+            }
+
+
+        }
+    </style>
 </head>
+
 <body>
+    <!-- navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#"><span class="text-warning">Total</span>Fitness</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#trainings">Training</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#membership">Membership</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#supplements">Supplements</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- navbar -->
+    <!-- carousel -->
+
+    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
+                aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+                aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+                aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="./img/carousel1.jpg" class="d-block w-100" alt="...">
+                <div class="carousel-caption">
+                    <h5>There Is No Tommorw</h5>
+                    <p><a href="#" class="btn btn-warning mt-3">Start Today</a></p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="./img/carousel2.jpg" class="d-block w-100" alt="...">
+                <div class="carousel-caption">
+                    <h5>There Is No Tommorw</h5>
+                    <p><a href="#" class="btn btn-warning mt-3">Start Today</a></p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="img/carousel3.jpg" class="d-block w-100" alt="...">
+                <div class="carousel-caption">
+                    <h5>There Is No Tommorw</h5>
+                    <p><a href="#" class="btn btn-warning mt-3">Start Today</a></p>
+                </div>
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+            data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+            data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+    <!-- carousel -->
+    <!-- about -->
+    <section id="about" class="about section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-12 col-12">
+                    <div class="about-img" data-aos="zoom-out-down">
+                        <img src="img/about.jpg" alt="" class="img-fluid">
+                    </div>
+                </div>
+                <div class="col-lg-8 col-md-12 col-12 ps-lg-5 mt-md-5">
+                    <div class="about-text">
+                        <h2>We Provide the Best Gym Facility <br /> With The Certified Professionals Trainers</h2>
+                        <p>Instead of being just another gym equipment retailer, our founders wanted to be the best in
+                            the industry and set their
+                            minds to doing so! Over the last two decades Gym and Fitness has grown into one of
+                            Australia’s largest online fitness
+                            equipment retailers, helping thousands of customers live longer, happier and healthier
+                            lives.</p>
+                        <a href="#" class="btn btn-warning">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- about -->
+    <!-- trainings -->
+
+    <section class="trainings section-padding" id="trainings">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="section-header text-center pb-5">
+                        <h2>Training Services</h2>
+                        <p>We provide diffrent types of traning to meet the need of our memebers with well trained
+                            certified professional trainers.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 col-md-12 col-lg-3 " data-aos="fade-right" data-aos-duration="2000">
+                    <div class="card text-white text-center bg-dark pb-2">
+                        <div class="card-body">
+                            <img src="./img/weight-gain.png" width="150px">
+                            <h3 class="card-title">WEIGHT GAIN</h3>
+                            <p class="lead">Weight-Gain Program includes a high diet program and intermidiate weight
+                                training.</p>
+                            <button class="btn">Read More</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-12 col-lg-3 " data-aos="fade-right" data-aos-duration="2000">
+                    <div class="card text-white text-center bg-dark pb-2">
+                        <div class="card-body">
+                            <img src="./img/weight-loss.png" width="150px">
+                            <h3 class="card-title">WEIGHT LOSS</h3>
+                            <p class="lead">This Program includes a mix of intense cardio and intermidiate weight
+                                training with a diet.</p>
+                            <button class="btn">Read More</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-12 col-lg-3" data-aos="fade-left" data-aos-duration="2000">
+                    <div class="card text-white text-center bg-dark pb-2">
+                        <div class="card-body">
+                            <img src="./img/Strength.png" width="150px">
+                            <h3 class="card-title">STRENGTH TRAINING</h3>
+                            <p class="lead">Strength Training is a important part of buliding pure muscle
+                                without excess fat.</p>
+                            <button class="btn">Read More</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-12 col-lg-3" data-aos="fade-left" data-aos-duration="2000">
+                    <div class="card text-white text-center bg-dark pb-2">
+                        <div class="card-body">
+                            <img src="./img/Yoga.png" width="150px">
+                            <h3 class="card-title">YOGA</h3>
+                            <p class="lead">Yoga improves strength, balance and flexibility.Yoga increase blood flow and
+                                warm up muscles</p>
+                            <button class="btn">Read More</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- trainings -->
+
+    <!-- membership -->
+    <section id="membership" class="membership section-padding">
+        <div class="container-fluid">
+            <div class="container">
+                <div class="row">
+
+                    <div class="section-header text-center pb-5">
+                        <h2>Membership Plans</h2>
+                    </div>
+                    <div class="col-md-12 col-lg-4" data-aos="flip-left" data-aos-easing="ease-out-cubic"
+                        data-aos-duration="2000">
+                        <div class="card text-center bg-dark pb-2">
+                            <div class="card-body">
+                                <h3>1 Month</h3>
+                                <div class="price"><span>$</span>30</div>
+                                <div class="list">
+                                    <p><i class="fas fa-check"></i> personal trainer</p>
+                                    <p><i class="fas fa-check"></i> cardio exercise</p>
+                                    <p><i class="fas fa-check"></i> weight training</p>
+                                    <p><i class="fas fa-check"></i> diet plan</p>
+                                    <p><i class="fas fa-check"></i> free classes</p>
+                                    <button class="btn">Get Started</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-lg-4" data-aos="flip-left" data-aos-easing="ease-out-cubic"
+                        data-aos-duration="2000">
+                        <div class="card text-center pb-2 bg-dark">
+                            <div class="card-body">
+                                <h3>3 Months</h3>
+                                <div class="price"><span>$80</span></div>
+                                <div class="list">
+                                    <p><i class="fas fa-check"></i> personal trainer</p>
+                                    <p><i class="fas fa-check"></i> cardio exercise</p>
+                                    <p><i class="fas fa-check"></i> weight training</p>
+                                    <p><i class="fas fa-check"></i> diet plan</p>
+                                    <p><i class="fas fa-check"></i> free classes</p>
+                                    <button class="btn">Get Started</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-lg-4" data-aos="flip-left" data-aos-easing="ease-out-cubic"
+                        data-aos-duration="2000">
+                        <div class="card text-center bg-dark pb-2">
+                            <div class="card-body">
+                                <h3>6 Months</h3>
+                                <div class="price"><span>$</span>150</div>
+                                <div class="list">
+                                    <p><i class="fas fa-check"></i> personal trainer</p>
+                                    <p><i class="fas fa-check"></i> cardio exercise</p>
+                                    <p><i class="fas fa-check"></i> weight training</p>
+                                    <p><i class="fas fa-check"></i> diet plan</p>
+                                    <p><i class="fas fa-check"></i> free classes</p>
+                                    <button class="btn">Get Started</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- membership -->
+    <!-- supplements -->
+    <section class="supplements section-padding" id="supplements">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 " >
+                    <div class="section-header text-center pb-5">
+                        <h2>Supplements</h2>
+                        <h2>Protein Powders</h2>
+                        <p>Whey Concentrate,Whey Isolate,Whey Hydrolysate and Casein</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 col-md-6 col-lg-3 mb-4" data-aos="zoom-in"  data-aos-duration="2000">
+                    <div class="card">
+                        <img src="./img/img1.jpg" alt="">
+                        <div class="card-brand">
+                            <span>Optimum Nutrition</span>
+                            <h5>Optimum Nutrition Gold Standard 100% Whey protein</h5>
+                            <h4>$280</h4>
+                        </div>
+                        <a href="#" class="btn">Buy</button></a>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-3 mb-4" data-aos="zoom-in"  data-aos-duration="2000">
+                    <div class="card">
+                        <img src="./img/img2.png" alt="">
+                        <div class="card-brand">
+                            <span>Optimum Nutrition</span>
+                            <h5>ON Gold Standard 100% Whey card (Delicious Strawberry Flavor)</h5>
+                            <h4>$86</h4>
+                        </div>
+                        <a href="#" class="btn">Buy</button></a>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-3 mb-4" data-aos="zoom-in"  data-aos-duration="2000">
+                    <div class="card">
+                        <img src="./img/img3.jpg" alt="">
+                        <div class="card-brand">
+                            <span>Optimum Nutrition</span>
+                            <h5>ON Gold Standard 100% Whey Post-Workout Muscle Recovery</h5>
+                            <h4>$286</h4>
+                        </div>
+                        <a href="#" class="btn">Buy</button></a>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-3 mb-4" data-aos="zoom-in"  data-aos-duration="2000">
+                    <div class="card">
+                        <img src="./img/img4.png" alt="">
+                        <div class="card-brand">
+                            <span>Optimum Nutrition</span>
+                            <h5>ON Gold Standard 100% Whey card (Vanilla Ice Cream Flavor)</h5>
+                            <h4>$86</h4>
+                        </div>
+                        <a href="#" class="btn">Buy</button></a>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-6 col-lg-3 mb-4" data-aos="zoom-in"  data-aos-duration="2000">
+                    <div class="card">
+                        <img src="./img/img5.jpg" alt="">
+                        <div class="card-brand">
+                            <span>Optimum Nutrition</span>
+                            <h5>Optimum Nutrition - Gold Standard 100% WHEY card Isolate Chocolate</h5>
+                            <h4>$315</h4>
+                        </div>
+                        <a href="#" class="btn">Buy</button></a>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-3 mb-4" data-aos="zoom-in"  data-aos-duration="2000">
+                    <div class="card">
+                        <img src="./img/img6.png" alt="">
+                        <div class="card-brand">
+                            <span>Optimum Nutrition</span>
+                            <h5>ON Gold Standard 100% Whey card (Strawberry Banana)</h5>
+                            <h4>$289</h4>
+                        </div>
+                        <a href="#" class="btn">Buy</button></a>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-3 mb-4" data-aos="zoom-in"  data-aos-duration="2000">
+                    <div class="card">
+                        <img src="./img/img7.png" alt="">
+                        <div class="card-brand">
+                            <span>Optimum Nutrition</span>
+                            <h5>ON Gold Standard 100% Whey card (Double Rich Chocolate Flavor)</h5>
+                            <h4>$86</h4>
+                        </div>
+                        <a href="#" class="btn">Buy</button></a>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-3 mb-4" data-aos="zoom-in"  data-aos-duration="2000">
+                    <div class="card">
+                        <img src="./img/img8.jpg" alt="">
+                        <div class="card-brand">
+                            <span>Optimum Nutrition</span>
+                            <h5>Optimum Nutrition Serious Mass Weight Gainer Protein Powder</h5>
+                            <h4>$200</h4>
+                        </div>
+                        <a href="#" class="btn">Buy</button></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- supplements -->
+    <!-- Contact -->
+    <section id="contact" class="contact section-padding">
+        <div class="container mt-5 mb-5">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="section-header text-center pb-5">
+                        <h1>Connect With Us</h1>
+                        <p>Feel free to get in touch with us</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row m-0">
+                <div class="col-md-12 p-0 pt-4 pb-4">
+                    <form action="#" class="bg-light p-4 m-auto">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="mb-3">
+                                    <input class="form-control" placeholder="Full Name" required="" type="text">
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="mb-3">
+                                    <input class="form-control" placeholder="Email" required="" type="email">
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="mb-3">
+                                    <textarea class="form-control" placeholder="Message" required=""
+                                        rows="3"></textarea>
+                                </div>
+                            </div><button class="btn mt-3" type="button">Send Now</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- contact -->
+    <!-- footer  -->
+    <footer>
+        <div class="footer-content">
+            <div class="container"></div>
+            <h3>TOTAL FITNESS</h3>
+            <p>Follow us on social media below.</p>
+            <ul class="socials">
+                <li><a href="#"><i class="fa-brands fa-facebook"></i></a></li>
+                <li><a href="#"><i class="fa-brands fa-twitter"></i></a></li>
+                <li><a href="#"><i class="fa-brands fa-google-plus"></i></a></li>
+                <li><a href="#"><i class="fa-brands fa-youtube"></i></a></li>
+            </ul>
+        </div>
+        <div class="footer-bottom">
+            <p>Designed by <span>Aung Si Hein</span></p>
+        </div>
+        </div>
+    </footer>
     
+
+    <!-- footer  -->
+
+    <script src="./vendors/jquery.3.7.0.js"></script>
+    <script src="./vendors/bootstrap.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <script>
+        AOS.init();
+    </script>
 </body>
+
 </html>
+
+
+
+
